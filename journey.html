@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey · Krithi Kailar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #151210;
+      --gold:      #d4ac6e;
+      --gold-dim:  #a07d48;
+      --cream:     #f0e6d0;
+      --cream-dim: #c4aa88;
+      --white:     #faf5ec;
+      --rule:      rgba(212,172,110,0.3);
+      --font-disp: 'Cormorant SC', serif;
+      --font-body: 'Cormorant Garamond', serif;
+      --font-alt:  'EB Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180,130,60,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(150,100,40,0.04) 0%, transparent 60%);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 19px;
+      line-height: 1.8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.8rem;
+      padding: 1.4rem 2rem;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.96) 80%, transparent);
+      letter-spacing: 0.12em;
+      font-family: var(--font-disp);
+      font-size: 0.72rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    nav a {
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a.active { color: var(--gold); }
+
+    /* WRAP */
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 140px 2rem 72px;
+      text-align: center;
+    }
+    .page-header::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 56px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.9rem;
+    }
+    .stitle {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.1rem;
+    }
+    .stitle em {
+      font-style: italic;
+      font-family: var(--font-alt);
+      text-transform: none;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+    }
+    .title-bar {
+      width: 48px;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 0 auto;
+    }
+
+    /* JOURNEY GRID */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 64px 0 80px;
+      align-items: start;
+    }
+
+    .journey-col-title {
+      font-family: var(--font-disp);
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .t-item {
+      position: relative;
+      padding: 0 0 2.4rem 1.6rem;
+      border-left: 1px solid var(--rule);
+    }
+    .t-item:last-child { padding-bottom: 0; }
+    .t-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(201,169,110,0.4);
+    }
+
+    .t-item h4 {
+      font-family: var(--font-disp);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+      line-height: 1.35;
+    }
+
+    .t-year {
+      font-family: var(--font-alt);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .t-item p {
+      font-family: var(--font-alt);
+      font-size: 1rem;
+      color: var(--cream);
+      line-height: 1.75;
+    }
+    .t-item p strong { color: var(--white); font-weight: 500; }
+    .t-item p em { color: var(--gold-dim); }
+
+    /* STAGES */
+    .stages { list-style: none; }
+
+    .stage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+    }
+    .stage-item:last-child { border-bottom: none; }
+
+    .stage-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--gold-dim);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .stage-name {
+      font-family: var(--font-disp);
+      font-size: 0.92rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .stage-place {
+      font-family: var(--font-alt);
+      font-style: italic;
+      font-size: 0.86rem;
+      color: var(--cream);
+      margin-top: 0.15rem;
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: block;
+      text-align: center;
+      padding-bottom: 64px;
+      font-family: var(--font-disp);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-header { animation: fadeUp 0.9s ease both; }
+    .journey-grid { animation: fadeUp 0.9s ease 0.2s both; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .journey-grid { grid-template-columns: 1fr; gap: 3rem; }
+      nav { gap: 1.4rem; font-size: 0.62rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html#about">Profile</a>
+    <a href="journey.html" class="active">Journey</a>
+    <a href="index.html#achievements">Honours</a>
+    <a href="index.html#vision">Vision</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <header class="page-header">
+    <div class="wrap">
+      <div class="section-label">Nrtya Sadhana</div>
+      <h2 class="stitle">The Artistic <em>Journey</em></h2>
+      <div class="title-bar"></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="journey-grid">
+
+        <div>
+          <div class="journey-col-title">Training &amp; Mentorship</div>
+          <div class="timeline">
+
+            <div class="t-item">
+              <h4>Early Training · Foundational Years</h4>
+              <div class="t-year">Age 6 Onwards</div>
+              <p>Began under the revered <strong>Natya Guru Sri Balakrishna Manjeshwar</strong>, mastering the fundamentals with precision and devotion.</p>
+            </div>
+
+            <div class="t-item">
+              <h4>Advanced Studies · Kalakshetra Style</h4>
+              <div class="t-year">Ongoing</div>
+              <p>Refining craft under <strong>Vidushi Smt. Suhasini Koulagi</strong> of Mysuru in the refined Kalakshetra tradition.</p>
+            </div>
+
+            <div class="t-item">
+              <h4>Karnataka Shastriya Sangita</h4>
+              <div class="t-year">Brahmavidya Institution</div>
+              <p>Studying the classical Carnatic vocal tradition under the guidance of <strong>Vidwan Dr R S Nandakumar</strong> and <strong>Vidwan Sumukha Srivatsa</strong>, deepening her immersion in the <em>shastriya</em> arts.</p>
+            </div>
+
+            <div class="t-item">
+              <h4>Academic Certifications</h4>
+              <div class="t-year">Karnataka Govt. &amp; Gangubai Hangal University</div>
+              <p>Distinction in Junior &amp; Senior Grade examinations; Distinction in Pre-Vidwath; Karnataka Sangeeta Nritya Academy Scholarship 2024–25; Auditioned at Doordarshana Kendra, Bengaluru.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <div class="journey-col-title">Revered Stages</div>
+          <ul class="stages">
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Rajangana Stage</div>
+                <div class="stage-place">Udupi Sri Krishna Mutt</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Guruvayur Temple</div>
+                <div class="stage-place">Kerala</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Nemotsava</div>
+                <div class="stage-place">Uppinangady</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Save Soil Campaign</div>
+                <div class="stage-place">Welcoming Sadhguru · Isha Foundation, Mysore</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Kisan Swaraj Sammelana</div>
+                <div class="stage-place">Mysore</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Kannada Rajyotsava Celebrations</div>
+                <div class="stage-place">Mysore</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Puttur Dasara</div>
+                <div class="stage-place">Mahalingeshwara Temple</div>
+              </div>
+            </li>
+            <li class="stage-item">
+              <div class="stage-dot"></div>
+              <div>
+                <div class="stage-name">Suttur Jathra Mahotsava</div>
+                <div class="stage-place">Annual Performances</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <a href="index.html" class="back-link">Return to Krithi Kailar</a>
+    </div>
+  </main>
+
+</body>
+</html>
