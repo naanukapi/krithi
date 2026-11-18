@@ -1,0 +1,1 @@
+{"name":"krithi-kailar","private":true,"version":"2.0.0","scripts":{"dev":"node scripts/serve.mjs","build":"python3 scripts/build.py","test":"python3 scripts/check.py"}}

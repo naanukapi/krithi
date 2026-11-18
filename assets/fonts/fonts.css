@@ -1,0 +1,8 @@
+@font-face{font-family:'BV Nanda';src:url('./BVNanda-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'BV Nanda';src:url('./BVNanda-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'BV Nanda';src:url('./BVNanda-Italic.woff2') format('woff2');font-style:italic;font-weight:400;font-display:swap}
+@font-face{font-family:'EB Garamond';src:url('./EBGaramond-Regular-variable.woff2') format('woff2');font-style:normal;font-weight:400 800;font-display:swap}
+@font-face{font-family:'EB Garamond';src:url('./EBGaramond-Italic-variable.woff2') format('woff2');font-style:italic;font-weight:400 800;font-display:swap}
+@font-face{font-family:'Alegreya Sans';src:url('./AlegreyaSans-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Alegreya Sans';src:url('./AlegreyaSans-Medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'Alegreya Sans';src:url('./AlegreyaSans-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
