@@ -45,9 +45,9 @@ for name, page in pages.items():
                 assert url.fragment in target_ids, f'Broken anchor: {value}'
 
 manifest = json.loads((ROOT / 'assets/photos/manifest.json').read_text())
-assert len(manifest) == 89
+assert len(manifest) == 88
 archive = [a for _, a in pages['gallery.html'].elements if a.get('class') == 'archive-item']
-assert {int(a['data-id']) for a in archive} == set(range(89))
+assert {int(a['data-id']) for a in archive} == {photo["id"] for photo in manifest}
 for photo in manifest:
     for key in ('filename', 'thumbnail'):
         assert (ROOT / 'assets/photos' / photo[key]).stat().st_size > 0
@@ -59,7 +59,7 @@ assert '3 December 2026' in classes and '8431534682' in classes
 assert 'location-qr.png' in classes and '16th Cross' in classes
 assert '90% marks, earning distinction' in (ROOT / 'about.html').read_text()
 assert 'D. V. Gundappa' in (ROOT / 'pratyaveksini.html').read_text()
-print('Passed: 10 pages, local links and anchors, metadata, image alternatives, 89 photos, class details and no em dashes.')
+print('Passed: 10 pages, local links and anchors, metadata, image alternatives, 88 photos, class details and no em dashes.')
 
 for name in pages:
     source = (ROOT / name).read_text()

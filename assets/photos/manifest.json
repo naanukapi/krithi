@@ -330,17 +330,6 @@
     "archivalScreenshot": false
   },
   {
-    "id": 30,
-    "filename": "30.webp",
-    "thumbnail": "30-sm.webp",
-    "width": 720,
-    "height": 1600,
-    "sourceoriginalname": "Screenshot_20250517-163554.VLC.png",
-    "category": "portraits",
-    "alt": "An archival screen capture of a close portrait of Krithi",
-    "archivalScreenshot": true
-  },
-  {
     "id": 31,
     "filename": "31.webp",
     "thumbnail": "31-sm.webp",
