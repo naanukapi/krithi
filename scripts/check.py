@@ -38,7 +38,7 @@ for name, page in pages.items():
             if url.scheme or url.netloc:
                 continue
             path = unquote(url.path)
-            target = ROOT / path if path else ROOT / name
+            target = ROOT / path.lstrip("/") if path else ROOT / name
             assert target.exists(), f'Broken local link: {name} -> {value}'
             if url.fragment and target.suffix == '.html':
                 target_ids = [a.get('id') for _, a in pages[target.name].elements]

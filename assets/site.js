@@ -24,3 +24,40 @@
  const form=document.querySelector('#enquiry-form');
  form?.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const data=new FormData(form);const subject=`Website enquiry: ${data.get('topic')}`;const body=`Hello Krithi,\n\n${data.get('message')}\n\nFrom: ${data.get('name')}\nEmail: ${data.get('email')}`;location.href=`mailto:kailarkrithi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;document.querySelector('#form-status').textContent='Your email app should open with a draft. Please review and send it there. If it does not open, email kailarkrithi@gmail.com or message 8431534682 on WhatsApp.';});
 })();
+
+(() => {
+ const control = document.querySelector('.profile-download');
+ if (!control) return;
+ const trigger = control.querySelector('summary');
+ let hoverOpened = false;
+ control.addEventListener('pointerenter', event => {
+   if (event.pointerType === 'mouse' && !control.open) {
+     control.open = true;
+     hoverOpened = true;
+   }
+ });
+ trigger.addEventListener('click', event => {
+   if (hoverOpened && control.open) event.preventDefault();
+   hoverOpened = false;
+ });
+ control.addEventListener('pointerleave', () => {
+   if (hoverOpened && !control.contains(document.activeElement)) control.open = false;
+   hoverOpened = false;
+ });
+ document.addEventListener('pointerdown', event => {
+   if (!control.contains(event.target)) control.open = false;
+ });
+ control.addEventListener('focusout', event => {
+   if (!control.contains(event.relatedTarget)) control.open = false;
+ });
+ document.addEventListener('keydown', event => {
+   if (event.key === 'Escape' && control.open) {
+     control.open = false;
+     if (control.contains(document.activeElement)) trigger.focus();
+   }
+ });
+ control.querySelectorAll('a').forEach(card => card.addEventListener('click', () => {
+   trigger.focus();
+   control.open = false;
+ }));
+})();
