@@ -72,3 +72,45 @@ if (mysuruDate === '2026-11-22') {
  details.href = 'performances.html#rama-govinda';
  details.textContent = 'Performance details';
 }
+
+(() => {
+ const dialog = document.querySelector('#class-interest');
+ const form = document.querySelector('#class-interest-form');
+ const phone = form.elements.phone;
+ const place = form.elements.place;
+ let opener;
+ function openForm(mode) {
+   form.elements.mode.value = ({online: 'Online', offline: 'Offline'})[mode] || '';
+   dialog.showModal();
+   phone.focus();
+ }
+ document.querySelectorAll('a[href$="#class-interest"]').forEach(link => {
+   link.addEventListener('click', event => {
+     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+     event.preventDefault();
+     opener = link;
+     openForm(new URL(link.href).searchParams.get('mode'));
+   });
+ });
+ if (location.hash === '#class-interest') openForm(new URLSearchParams(location.search).get('mode'));
+ dialog.querySelector('.interest-close').addEventListener('click', () => dialog.close());
+ dialog.addEventListener('close', () => opener?.focus());
+ phone.addEventListener('input', () => phone.setCustomValidity(''));
+ place.addEventListener('input', () => place.setCustomValidity(''));
+ form.addEventListener('submit', event => {
+   event.preventDefault();
+   const number = phone.value.trim();
+   const city = place.value.trim();
+   const digits = number.replace(/\D/g, '');
+   phone.setCustomValidity(/^\+?[\d\s().-]+$/.test(number) && digits.length >= 7 && digits.length <= 15 ? '' : 'Enter a valid contact number, including the country code if applicable.');
+   place.setCustomValidity(city ? '' : 'Enter your town or city.');
+   if (!form.reportValidity()) return;
+   const lines = ['Hi, I am interested in class.', '', 'Contact number: ' + number,
+     'Age: ' + form.elements.age.value, 'Location: ' + city, 'Class: ' + form.elements.mode.value];
+   const notes = form.elements.notes.value.trim();
+   if (notes) lines.push('Class details: ' + notes);
+   const destination = new URL('https://wa.me/918431534682');
+   destination.searchParams.set('text', lines.join('\n'));
+   window.location.assign(destination.href);
+ });
+})();

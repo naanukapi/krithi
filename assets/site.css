@@ -74,3 +74,12 @@
 .performance-notice h2{font-size:clamp(1.9rem,4vw,3.4rem);margin:.3em 0}
 .performance-notice time,.performance-notice address{font-family:var(--sans);font-style:normal}
 .performance-notice .button{margin-top:1rem;white-space:normal}
+
+.interest-dialog{width:min(31rem,calc(100vw - 2rem));max-height:90dvh;margin:auto;padding:0;border:1px solid var(--copper);background:var(--ink);color:var(--cream);overflow:auto}
+.interest-dialog::backdrop{background:#120c0bd9}
+.interest-dialog .enquiry-form{position:relative;padding:clamp(1.1rem,4vw,2rem);margin:0}
+.interest-dialog h2{font-size:2rem;padding-right:2rem;margin:0 0 1rem}
+.interest-dialog .interest-close{position:absolute;top:.6rem;right:.6rem;width:44px;height:44px;font-size:1.6rem;color:var(--cream);background:transparent;border:0;cursor:pointer}
+.interest-dialog :is(input,select,textarea){width:100%;font-size:1rem}
+.interest-dialog .button{margin-top:.6rem}
+.hero-copy>.hero-class+.button{margin-top:.65rem;pointer-events:auto}
