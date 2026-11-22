@@ -61,3 +61,14 @@
    control.open = false;
  }));
 })();
+
+const mysuruDate = new Intl.DateTimeFormat('en-CA', {
+ timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit'
+}).format(new Date());
+if (mysuruDate === '2026-11-22') {
+ const notice = document.querySelector('.announcement');
+ notice.querySelector('span:nth-child(2)').textContent = 'Today, 22 November · Krithi at Rama Govinda Ranga Mandira, Mysuru';
+ const details = notice.querySelector('a');
+ details.href = 'performances.html#rama-govinda';
+ details.textContent = 'Performance details';
+}

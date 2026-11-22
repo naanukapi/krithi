@@ -66,3 +66,11 @@
 @media(max-width:700px){.site-header{gap:8px;padding-inline:12px}.profile-download summary{padding:0 12px;gap:5px}.profile-panel{right:-20px}}
 @media(max-width:365px){.site-header .brand-title{display:none}}
 @media(prefers-reduced-motion:no-preference){.profile-download[open] .profile-panel{animation:profile-reveal .16s ease-out}@keyframes profile-reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}}
+
+.school-sign{display:block;width:min(100%,36rem);height:auto}
+.hero-class .school-sign{width:min(100%,17rem)}
+.class-teaser .school-sign,.contact-class-note .school-sign{width:min(100%,28rem)}
+.performance-notice{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:2rem clamp(1rem,4vw,3rem);margin-bottom:2rem;background:#302019;border-block:1px solid var(--copper)}
+.performance-notice h2{font-size:clamp(1.9rem,4vw,3.4rem);margin:.3em 0}
+.performance-notice time,.performance-notice address{font-family:var(--sans);font-style:normal}
+.performance-notice .button{margin-top:1rem;white-space:normal}
