@@ -83,3 +83,9 @@
 .interest-dialog :is(input,select,textarea){width:100%;font-size:1rem}
 .interest-dialog .button{margin-top:.6rem}
 .hero-copy>.hero-class+.button{margin-top:.65rem;pointer-events:auto}
+.interest-options{padding:0;margin:1rem 0;border:0}
+.interest-options legend{margin-bottom:.4rem}
+.interest-options div{display:flex;gap:.5rem}
+.interest-dialog .interest-options label{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;margin:0;border:1px solid var(--line);border-radius:.45rem;cursor:pointer}
+.interest-dialog .interest-options label:has(:checked){color:var(--cream);border-color:var(--copper)}
+.interest-dialog .interest-options input{width:1rem;height:1rem;margin:0;accent-color:var(--copper)}

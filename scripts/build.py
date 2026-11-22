@@ -22,14 +22,15 @@ def interest_link(mode):
 interest_form = """<dialog id="class-interest" class="interest-dialog" aria-labelledby="interest-title">
  <form id="class-interest-form" method="dialog" class="enquiry-form">
  <button type="button" class="interest-close" aria-label="Close class enquiry">×</button>
- <h2 id="interest-title">Class enquiry</h2>
- <label for="interest-phone">Contact number</label><input id="interest-phone" name="phone" type="tel" autocomplete="tel" required maxlength="32">
- <label for="interest-age">Student’s age in years</label><input id="interest-age" name="age" type="number" min="1" max="120" step="1" required>
- <label for="interest-place">Location (town or city)</label><input id="interest-place" name="place" autocomplete="address-level2" maxlength="100" required>
- <label for="interest-mode">Class preference</label><select id="interest-mode" name="mode" required><option value="">Select a class</option><option value="Offline">Offline · Sri Sita Rama Natya Kuteera, Mysuru</option><option value="Online">Online</option></select>
- <label for="interest-notes">Class details (optional)</label><textarea id="interest-notes" name="notes" rows="2" maxlength="500" placeholder="Dance experience, preferred timings or questions"></textarea>
- <p class="micro">Your details will open in a WhatsApp draft for you to review and send to Krithi.</p>
- <button class="button" type="submit">Continue to WhatsApp</button></form></dialog>"""
+ <h2 id="interest-title">Join a Bharatanatyam class</h2>
+ <fieldset class="interest-options"><legend>Where would you like to learn?</legend><div>
+ <label><input type="radio" name="mode" value="Offline" checked> In Mysuru</label>
+ <label><input type="radio" name="mode" value="Online"> Online</label></div></fieldset>
+ <label for="interest-age">Student’s age</label><input id="interest-age" name="age" type="number" inputmode="numeric" min="1" max="120" step="1" required>
+ <label for="interest-place">Your town or city</label><input id="interest-place" name="place" autocomplete="address-level2" maxlength="100" required>
+ <label for="interest-phone">Your mobile number</label><input id="interest-phone" name="phone" type="tel" autocomplete="tel" required maxlength="32">
+ <p class="micro">We’ll prepare the message. You can review it in WhatsApp before sending.</p>
+ <button class="button" type="submit">Go to WhatsApp</button></form></dialog>"""
 
 def teaser():return f'''<aside class="class-teaser wrap reveal"><div class="date-lockup"><strong>03</strong><span>December<br/>2026</span></div><div>{eyebrow('Offline classes in Mysuru')}<h2>{SIGN}</h2><p>Offline Bharatanatyam classes begin at Jayanagara Rama Mandira.</p><p class="online-teaser">Online classes: <a href="{WA}">contact Krithi on WhatsApp {ARROW}</a></p></div>{interest_link('offline')}</aside>'''
 def profile_download():

@@ -80,9 +80,9 @@ if (mysuruDate === '2026-11-22') {
  const place = form.elements.place;
  let opener;
  function openForm(mode) {
-   form.elements.mode.value = ({online: 'Online', offline: 'Offline'})[mode] || '';
+   form.elements.mode.value = mode === 'online' ? 'Online' : 'Offline';
    dialog.showModal();
-   phone.focus();
+   dialog.querySelector('input:checked').focus();
  }
  document.querySelectorAll('a[href$="#class-interest"]').forEach(link => {
    link.addEventListener('click', event => {
@@ -105,12 +105,13 @@ if (mysuruDate === '2026-11-22') {
    phone.setCustomValidity(/^\+?[\d\s().-]+$/.test(number) && digits.length >= 7 && digits.length <= 15 ? '' : 'Enter a valid contact number, including the country code if applicable.');
    place.setCustomValidity(city ? '' : 'Enter your town or city.');
    if (!form.reportValidity()) return;
-   const lines = ['Hi, I am interested in class.', '', 'Contact number: ' + number,
-     'Age: ' + form.elements.age.value, 'Location: ' + city, 'Class: ' + form.elements.mode.value];
-   const notes = form.elements.notes.value.trim();
-   if (notes) lines.push('Class details: ' + notes);
+   const age = form.elements.age.value;
+   const introduction = form.elements.mode.value === 'Online'
+     ? 'Namaste, I’m interested in joining your online Bharatanatyam classes.'
+     : 'Namaste, I’m interested in joining Sri Sita Rama Natya Kuteera for Bharatanatyam classes in Mysuru.';
+   const message = introduction + ' I live in ' + city + '. Could you please suggest a batch for a student aged ' + age + ' and let me know the timings and fees? You can reach me on ' + number + '. Thank you!';
    const destination = new URL('https://wa.me/918431534682');
-   destination.searchParams.set('text', lines.join('\n'));
+   destination.searchParams.set('text', message);
    window.location.assign(destination.href);
  });
 })();
